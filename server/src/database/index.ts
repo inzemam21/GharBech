@@ -1,11 +1,10 @@
 import {MongoClient} from 'mongodb'
+import { Database } from "../lib/types";
 
-const user = "inzemam21"
-const userPassword = 'rikard321'
-const cluster = "cluster0.p2sts"
 
-const url = `mongodb+srv://${user}:${userPassword}@${cluster}.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
-export const connectDatabase = async () => {
+
+const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_USER_PASSWORD}@${process.env.DB_CLUSTER}.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+export const connectDatabase = async (): Promise<Database> => {
 
     const client = await MongoClient.connect(url);
 

@@ -1,6 +1,7 @@
 # dependencies
 
 
+/server/.env
 /server/src/database
 server/node_modules
 node_modules
