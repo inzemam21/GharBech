@@ -24,7 +24,8 @@
   "name": "GharBech_v1_server",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "build": "tsc -p ./"
+    "build": "tsc -p ./",
+    "seed": "ts-node temp/seed.ts"
   },
   "version": "0.1.0"
 }
