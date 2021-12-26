@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
+import {Listings} from "./sections";
 
 ReactDOM.render(
-    <div>hello</div>,
+    <Listings title="TinyHouse Listings" />,
   document.getElementById('root')
 );
 
