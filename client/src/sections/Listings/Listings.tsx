@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import {server} from '../../lib/api'
-import {DeleteListingsData, DeleteListingsVariables,ListingsData, Listing} from "./types";
+import React from 'react'
+import {server, useQuery} from '../../lib/api'
+import {DeleteListingsData, DeleteListingsVariables,ListingsData} from "./types";
 
 const LISTINGS = `query Listings {
   listings {
@@ -33,17 +33,18 @@ interface Props {
     title: string
 }
 export const Listings = ({ title }: Props) => {
-    const [ listings, setListings ] = useState<Listing[] | null>(null);
+    const {data, refresh} = useQuery<ListingsData>(LISTINGS);
+    const listings = data?.listings ?? null;
 
-    useEffect(( ) => {
-        fetchListing()
-            .catch(reason => console.error(`fetch listing failed: ${reason}`));
-    }, [])
-    const fetchListing = async () => {
-        const {data} = await server.fetch<ListingsData>({ query: LISTINGS })
-        console.log(data)
-        setListings(data.listings);
+    const deleteListing = async (id: string) => {
+        await server.fetch<DeleteListingsData, DeleteListingsVariables>({
+            query: DELETE_LISTING,
+            variables: {id}
+        });
+
+        refresh();
     }
+
     const listingsList = listings?.map(listing =>
         <li key={listing.id}>
             {listing.title}
@@ -56,9 +57,3 @@ export const Listings = ({ title }: Props) => {
     </div>
 }
 
-const deleteListing = async (id: string) => {
-    await server.fetch<DeleteListingsData, DeleteListingsVariables>({
-        query: DELETE_LISTING,
-        variables: {id}
-    })
-}
