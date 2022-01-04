@@ -1,34 +1,36 @@
 {
+  "name": "tinyhouse-server",
+  "version": "0.1.0",
   "dependencies": {
-    "apollo-server-express": "^3.5.0",
-    "body-parser": "^1.19.1",
-    "express": "^4.17.2",
-    "googleapis": "^92.0.0",
-    "graphql": "^16.2.0",
+    "apollo-server-express": "^2.6.4",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "googleapis": "^42.0.0",
+    "graphql": "^14.3.1",
     "lodash.merge": "^4.6.2",
-    "mongodb": "^4.2.2"
+    "mongodb": "^3.2.7"
   },
   "devDependencies": {
-    "@types/body-parser": "^1.19.2",
-    "@types/dotenv": "^8.2.0",
-    "@types/express": "^4.17.13",
-    "@types/graphql": "^14.5.0",
+    "@types/body-parser": "^1.17.0",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express": "^4.17.0",
+    "@types/graphql": "^14.2.1",
     "@types/lodash.merge": "^4.6.6",
-    "@types/mongodb": "^4.0.7",
-    "@types/node": "^17.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.8.0",
-    "@typescript-eslint/parser": "^5.8.0",
-    "dotenv": "^10.0.0",
-    "eslint": "^8.5.0",
-    "nodemon": "^2.0.15",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.4"
+    "@types/mongodb": "^3.1.28",
+    "@types/node": "^12.0.10",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "dotenv": "^8.0.0",
+    "eslint": "^6.0.1",
+    "nodemon": "^1.19.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.2"
   },
-  "name": "GharBech_v1_server",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "build": "tsc -p ./",
-    "seed": "ts-node temp/seed.ts"
-  },
-  "version": "0.1.0"
+    "seed": "ts-node temp/seed.ts",
+    "clear": "ts-node temp/clear.ts",
+    "build": "tsc -p ./"
+  }
 }

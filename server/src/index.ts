@@ -6,8 +6,6 @@ import express, { Application} from "express";
 import {ApolloServer} from "apollo-server-express";
 import {connectDatabase} from './database'
 import {resolvers, typeDefs} from './graphql'
-// import { resolvers} from "./graphql/resolvers";
-// import { typeDefs} from "./graphql/typeDefs";
 
 
 
@@ -20,7 +18,6 @@ const mount = async (app: Application) => {
         resolvers,
         context: () => ({db})
     });
-    await server.start()
     server.applyMiddleware({app, path: "/api"})
     app.listen(process.env.PORT)
 

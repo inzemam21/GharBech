@@ -52,7 +52,7 @@ const logInViaGoogle = async (
                 token
             }
         },
-        //{ returnDocument: false }
+        { returnOriginal: false }
     )
     let viewer = updateRes.value;
 
@@ -66,9 +66,9 @@ const logInViaGoogle = async (
             income: 0,
             bookings: [],
             listings: []
-        });
+        })
 
-        viewer = insertResult.insertedId;
+        viewer = insertResult.ops[0];
     }
 
     return viewer;
