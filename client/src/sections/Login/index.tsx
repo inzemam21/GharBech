@@ -1,5 +1,6 @@
 import React,{useEffect, useRef} from "react";
 import {Card ,Typography, Layout, Spin } from 'antd'
+import { Redirect  } from "react-router-dom";
 import { useApolloClient, useMutation } from "@apollo/react-hooks";
 import { AUTH_URL } from "../../lib/queries";
 import { LOG_IN } from "../../lib/mutations/LogIn";
@@ -70,6 +71,11 @@ export const Login = ({ setViewer }: Props) => {
                 <Spin size="large" tip="Logging you in..." />
             </Content>
         );
+    }
+
+    if (logInData && logInData.logIn) {
+        const { id: viewerId } = logInData.logIn;
+        return <Redirect to={`/user/${viewerId}`} />;
     }
 
     const logInErrorBannerElement = logInError ? (
